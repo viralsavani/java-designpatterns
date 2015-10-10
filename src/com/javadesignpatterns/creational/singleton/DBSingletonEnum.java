@@ -1,39 +1,27 @@
-package com.javadesignpatterns.singleton;
+package com.javadesignpatterns.creational.singleton;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * A simple singleton class to get the database connection
+ * "This approach is functionally equivalent to the public field approach, except that it
+ * is more concise, provides the serialization machinery for free, and provides an
+ * ironclad guarantee against multiple instantiation, even in the face of sophisticated
+ * serialization or reflection attacks. While this approach has yet to be widely
+ * adopted, a single-element enum type is the best way to implement a singleton"
+ * Joshua Bloch, Effective Java (2nd Edition)
  */
-public class DBSingleton {
-    private static DBSingleton instance = null;
+public enum DBSingletonEnum {
+    INSTANCE;
     private Connection conn = null;
 
-    /**
-     * Private constructor to prevent instantiating from outside this class
-     */
-    private DBSingleton(){
+    DBSingletonEnum(){
         try{
             DriverManager.registerDriver(new org.apache.derby.jdbc.EmbeddedDriver());
         }catch (SQLException e){
             e.printStackTrace();
         }
-    }
-
-    /**
-     * A public method to expose the instance of DBSingleton. This method is threadsafe and instance is lazy loaded.
-     */
-    public static DBSingleton getInstance(){
-        if (instance == null) {
-            synchronized (DBSingleton.class) {
-                if (instance == null) {
-                    instance = new DBSingleton();
-                }
-            }
-        }
-        return instance;
     }
 
     public Connection getConnection(){
