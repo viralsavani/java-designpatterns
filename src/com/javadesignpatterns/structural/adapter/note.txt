@@ -1,0 +1,3 @@
+-> Refactoring pattern
+-> Modifies behaviour
+-> Provide a different interface

@@ -1,0 +1,16 @@
+-> Provides simplified interface to a complex and difficult system due to poorly designed APIs
+-> Make API easier to use
+-> Reduce dependency on outside code
+-> Simplify the interface or client usage/interface
+-> Usually a refactoring pattern
+-> Simplifies an interface
+-> Works with composites
+
+<!--DESIGN-->
+-> It is a class that utilizes composition
+-> No need of inheritance
+-> Typically encompasses full object lifecycle
+
+<!--PITFALLS-->
+-> Typically used clean up code
+-> Flat problem or structure, NO INHERITANCE
