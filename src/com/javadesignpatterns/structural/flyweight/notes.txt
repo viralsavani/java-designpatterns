@@ -1,0 +1,13 @@
+-> Minimizes memory use with sharing data between similarly typed objects
+-> It is an optimization pattern
+-> Used when there are large number of similar objects, this is specially the case for the objects that are stateless or immutable
+
+<!--DESIGN-->
+-> Pattern of patterns
+-> Utilizes a factory to retrieve the objects after they have been created
+-> It often encompasses both creational and structural
+
+<!--PITFALLS-->
+-> A bit complex
+-> Pre mature optimization
+-> Must understand Factory

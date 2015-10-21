@@ -5,5 +5,5 @@ package com.javadesignpatterns.creational.factory;
  */
 public enum WebsiteType {
 
-    BLOG, SHOP;
+    BLOG, SHOP
 }
