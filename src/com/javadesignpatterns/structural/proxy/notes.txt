@@ -1,0 +1,12 @@
+-> Acts as an interface to something else
+-> Interface by wrapping
+-> It can also add functionality to that wrapped object but not its main purpose
+-> Proxy called to access real object
+
+<!--DESIGN-->
+-> Interface based
+-> Interface and implementation class
+
+<!--PITFALLS-->
+-> Only one proxy
+-> This adds one more abstraction layer
