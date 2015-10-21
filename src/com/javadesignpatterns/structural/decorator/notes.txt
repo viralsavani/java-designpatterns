@@ -1,0 +1,17 @@
+-> Also called wrapper
+-> Adds behaviour without affecting others
+-> More than just inheritance
+-> Single Responsibility Principle: Every class should have over a single functionality provided by software as a whole,
+and responsibility should be entirely encapsulated by class, i.e. it should do one thing and well
+-> Compose behaviour dynamically
+-> Contains an entity {It may sound like composite but it is really composition}
+-> It modifies the contained entity
+-> Decorate the underlying object but not necessarily change the object
+
+
+<!--PITFALLS--!>
+-> New class for every feature added
+-> Decorator can be confused with simple inheritance
+
+
+
