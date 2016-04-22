@@ -1,9 +1,6 @@
 package techquiz;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by viral on 4/21/2016.
@@ -11,6 +8,47 @@ import java.util.Set;
 public class Solution {
     public static void main(String[] args) {
 
+    }
+
+
+    public static String compressString(String text) {
+        StringBuilder sb = new StringBuilder();
+        char[] characters = text.toCharArray();
+        Arrays.sort(characters);
+        char currentChar = characters[0];
+        int counter = 1;
+
+        for (int i = 1; i < characters.length; i++) {
+            if (currentChar == characters[i]){
+                counter++;
+            }else {
+                sb.append(currentChar).
+                        append(counter > 1? String.valueOf(counter) : "");
+                currentChar = characters[i];
+                counter = 1;
+            }
+        }
+        sb.append(currentChar).
+                append(counter > 1? String.valueOf(counter) : "");
+        return sb.toString();
+    }
+
+    public static boolean isIntPalindrome(int x){
+        return x == reverseInt(x);
+    }
+
+    public static int reverseInt(int x) {
+        int reversed = 0;
+        int absX = Math.abs(x);
+        while (absX != 0){
+            int modulo = absX%10;
+            reversed = reversed*10 + (modulo);
+            absX = absX/10;
+        }
+        if (x < 0){
+            return -reversed;
+        }
+        return reversed;
     }
 
     public static double pow(double x, int n) {
