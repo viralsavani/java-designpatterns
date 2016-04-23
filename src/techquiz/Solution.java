@@ -10,6 +10,33 @@ public class Solution {
 
     }
 
+    public static String computeBinary(int val) {
+        StringBuilder sb = new StringBuilder();
+        int n = val;
+        while (n > 0){
+            sb.insert(0,n&1);
+            n = n >> 1;
+        }
+        return sb.toString();
+    }
+
+    public static int binarySearch(int[] array, int size, int value){
+        int low = 0;
+        int high = size - 1;
+
+        while (low <= high){
+            final int mid = (low + high) >>> 1;
+            final int midVal = array[mid];
+            if (midVal < value){
+                low = mid + 1;
+            }else if (midVal > value){
+                high = mid - 1;
+            }else {
+                return mid; // value found
+            }
+        }
+        return ~low;    // value not found
+    }
 
     public static String compressString(String text) {
         StringBuilder sb = new StringBuilder();
