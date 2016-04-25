@@ -2,12 +2,37 @@ package techquiz;
 
 import java.util.*;
 
-/**
- * Created by viral on 4/21/2016.
- */
 public class Solution {
     public static void main(String[] args) {
 
+    }
+
+    public static Character firstNonRepeatedCharacter(String input) {
+        int[] alphabets = new int[26];
+        for (char c : input.toLowerCase().toCharArray()){
+            alphabets[c - 97]++;
+        }
+        int i;
+        boolean flag = false;
+        for (i = 0; i < alphabets.length; i++) {
+            if (alphabets[i] == 1){
+                flag = true;
+                break;
+            }
+        }
+        return  flag ? (Character)(char)(i+97) : null;
+    }
+
+    public static Character firstRepeatedCharacter(String str) {
+        int[] t = new int[26];
+        for (char c : str.toLowerCase().toCharArray()){
+            if (t[c-97] != 0){
+                return c;
+            }else {
+                t[c-97] = 1;
+            }
+        }
+        return null;
     }
 
     public static String computeBinary(int val) {
