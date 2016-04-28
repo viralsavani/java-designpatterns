@@ -1,10 +1,83 @@
 package techquiz;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Solution {
+    static final int MAXIMUM_CAPACITY = 1 << 30;
+
     public static void main(String[] args) {
 
+    }
+
+    public static String reverseWord(String str){
+        List<String> list = new ArrayList<>(Arrays.asList(str.split(" ")));
+        Collections.reverse(list);
+        return list.stream().map(Object::toString)
+                .collect(Collectors.joining(" "));
+    }
+
+    public static int tableSizeFor(int cap) {
+        int n = cap - 1;
+        n |= n >>> 1;
+        n |= n >>> 2;
+        n |= n >>> 4;
+        n |= n >>> 8;
+        n |= n >>> 16;
+        return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
+    }
+
+    public static boolean permutation(String str1, String str2) {
+        if (str1 == null || str2 == null){
+            return false;
+        }
+        if (str1.length() != str2.length()){
+            return false;
+        }
+        Map<Character, Integer> map = new HashMap<>(str1.length());
+        for (Character c : str1.toCharArray()){
+            map.put(c, map.containsValue(c)? map.get(c)+1 : 1);
+        }
+        for (Character c : str2.toCharArray()){
+            if (map.containsKey(c)){
+                map.put(c, map.get(c)-1);
+            }else {
+                return false;
+            }
+        }
+        for (Map.Entry<Character, Integer> entry : map.entrySet()){
+            if (entry.getValue() > 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**Given a string, computes a new string where the identical
+     * adjacent characters in the original string are separated by a "*".
+     * insertPairStar("cac") ==> "cac"
+     * insertPairStar("cc") ==> "c*c"
+     */
+    public static String insertPairStar(String s) {
+        if (s == null){
+            return null;
+        }
+        if (s.length() == 1){
+            return s;
+        }
+
+        StringBuilder builder = new StringBuilder();
+        char current = s.charAt(0);
+        builder.append(current);
+
+        for (int i = 1; i < s.length(); i++) {
+            if (current == s.charAt(i)){
+                builder.append('*');
+            }
+            current = s.charAt(i);
+            builder.append(current);
+        }
+        return builder.toString();
     }
 
     public static Character firstNonRepeatedCharacter(String input) {
